@@ -1,0 +1,116 @@
+Besvara frågorna/uppgifterna nedan. 
+Formulera ditt svar på ett sådant sätt attdet tydligt framgår vad du avser. 
+Det bör räcka med ca 3 meningar per fråga/uppgift.
+
+1. Förklara vad som menas med en referens
+parameter i C++. Ge exempel. (2p)
+
+Normalt sätt kopieras värdet av parametern som skickades till funktionen till en ny variabel i funktionen.
+Om man deklarerar parametern som en referens parameter så refereras variabeln i den kallade funktionen till samma
+
+
+2. Vad menas med en lokal variabel och
+vilken räckvidd (eng. scope) har en
+sådan? (1p)
+
+
+3. Antag att binärsökning ska genomföras på
+värdet 6 i följden 1, 4, 7, 8, 12, 14,
+16, 21, 24, 35. Vilka jämförelser utförs? (1p)
+
+
+4. Vad är en funktionsprototyp och vad innehåller en sådan? (1p)
+
+
+5. Vad innebär konceptet/begreppet överlagring. Ge exempel. (2p)
+
+
+6. Vad sker vid ett funktionsanrop avseende de formella och de
+aktuella/faktiska parametrarna? (1p)
+
+
+7. Vad är det som måste finnas i en klass för att det ska vara möjligt att
+allokera minne för en array av denna klasstyp (gäller vid både statisk och
+dynamisk allokering)? (1p)
+
+
+8. Beskriv syntaxen för en destruktor. (1p)
+~ClassName
+
+9. Vad krävs för att kunna använda vector
+-klassen och hur skriver man i C++ om
+man vill skapa ett vector-objekt för strängar? (1p)
+#include <vector>
+vector<classname> myvector;
+
+10. Vad menas med default argument i en
+parameterlista till en funktion och
+vilken regel gäller för sådana. Ge exempel. (2p)
+function(asd, asd2, asd3="asd3")
+
+11. Namnge och beskriv principen för en sort
+eringsalgoritm samt visa hur följden
+12, 4, 32, 11, 23, 67, 5, 19 sorteras med den aktuella algoritmen. (2p) 
+
+bubblesort
+1:  12, 4, 32, 11, 23, 67, 5, 19
+2:  4, 12, 32, 11, 23, 67, 5, 19
+3:  4, 12, 11, 32, 23, 67, 5, 19
+4:  4, 11, 12, 32, 23, 67, 5, 19
+5:  4, 11, 12, 23, 32, 67, 5, 19
+6:  4, 11, 12, 23, 32, 5, 67, 19
+7:  4, 11, 12, 23, 5, 32, 67, 19
+8:  4, 11, 12, 5,  23, 32, 67, 19
+9:  4, 11, 5,  12, 23, 32, 67, 19
+10: 4, 5, 11,  12, 23, 32, 67, 19
+11: 4, 5, 11,  12, 23, 32, 19, 67
+12: 4, 5, 11,  12, 23, 19, 32, 67
+13: 4, 5, 11,  12, 19, 23, 32, 67
+14: 4, 5, 11,  12, 19, 23, 32, 67
+
+12. På vilket sätt kan du vid en klassdeklaration se till att medlemmar (funktioner
+och variabler) kan nås direkt från ett objekt via punktnotation. (1p)
+
+Göra variablerna public
+
+class MinKlass {
+private:
+	int privatint;
+public:
+	int publikint;
+}
+
+13. Hur skriver du kod i C++ för att avgöra
+om talet i heltalsvariabeln nr är ett
+udda tal? (1p)
+
+myint%2==0
+
+14. Beskriv konceptet/begreppet dynamisk
+minnesallokering. Ge exempel i C++
+kod. (2p)
+
+Det är när man skapar variabler när programmet körs, till skillnad från statisk som reserverar minne när programmet startar.
+int* myint = new int(8);
+
+
+15. Hur skriver du i C++ för att avalloker
+a/återlämna minne för en endimensionell
+heltalsarray namngiven nrs för vilken
+minne allokerats dynamiskt? (1p)
+
+
+16. Hur kan en initieringslista användas för att få värdena ”Ada”, ”Java”, ”C++”,
+”C#” i en array av strängar vilken ska ha namnet progLanguages? (1p)
+
+17. Hur skriver du i C++ om du vill undersök
+a om innehållet i strängvariabeln name
+alfabetiskt ligger mellan strängen ”a
+nna” och strängen ”kalle” . (1p)
+
+18. Ange syntaxen för en funktionsprototyp. (1p)
+
+19. Ge exempel på 2 olika sorters klassmedlemmar och ange hur man i C++
+deklarerar en klassmedlem? (2p)
+
+20. Beskriv principen för binärsökning.(2p) 

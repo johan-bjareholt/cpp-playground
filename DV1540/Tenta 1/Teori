@@ -1,0 +1,138 @@
+Besvara frågorna/uppgifterna nedan. Formulera ditt svar på ett sådant sätt att 
+det tydligt framgår vad du avser. Det bör räcka med ca 3 meningar per 
+fråga/uppgift. 
+
+
+1. Förklara vad skillnaden är mellan call-by-value och call-by-reference i C++. Ge 
+exempel. (2p) 
+
+
+
+
+
+2. Vilken räckvidd (eng. scope) har en konstant som är deklarerad utanför de 
+funktioner som finns i filen? (1p) 
+
+Om en konstant är deklarerad utanför en funktion, klass eller namespace så är variabeln global.
+Den kan då kommas åt överallt i filen samt i andra filer som inkluderar den.
+
+
+
+3. Ge exempel på värden där linjärsökning är snabbare än binärsökning och vice 
+versa om sökning ska genomföras på värden i följden 1, 4, 7, 8, 12, 14, 16, 21, 
+24, 35. Förklara varför. (2p) 
+
+En linjärsökning söker igenom alla från början tills den antingen hittar nummret eller den har kommit till slutet. 
+En binärsökning måste vara sorterad, och kollar om elementet i mitten är större eller mindre än det sökta värdet för att veta åt vilket håll det sökta värdet ligger.
+Denna metod kör man sedan flera gånger tills det eftersökta nummret funnits eller att nummret inte finns.
+
+Linjärsökningen skulle i det här fallet vara snabbare i den talföljden om det eftersökta värdet är 1.
+Binärsökningen skulle i det här fallet vara snabbare om den skulle söka efter ett värde som inte finns i talföljden.
+
+
+4. Vad är en funktionsprototyp och vad innehåller en sådan? (1p) 
+
+En funktionsprototyp berättar för kompilatorn vad som funktionen ska returnera samt vad funktionen har för argument.
+Prototypen berättar inte vad funktionen faktiskt ska göra, utan berättar bara för kompilatorn vad den behöver för att köras samt vad den returnerar.
+
+
+
+5. Gör ett exempel som visar på konceptet överlagring och förklara vad det 
+innebär. (2p) 
+
+int randnum(int max, int min);
+int randnum(int max);
+
+
+
+6. Ge exempel på formella (formal) respektive aktuella/faktiska (actual) 
+parametrar i samband med funktioner? (1p) 
+
+Formella parametrar är variabler som skickas som argument till en funktion.
+De faktiska parametrarna är variabler som har kopierat de formella parametrarnas värde.
+
+
+
+7. Vad är det som anropas i samband med att en array skapas (både vid statisk 
+allokering och dynamisk allokering) om datatypen för arrayen är en klasstyp? 
+ (1p) 
+
+
+
+
+8. Vad blir konsekvensen av att medlemsfunktioner görs konstanta? (1p) 
+
+Dem går inte att ändra på när objektet är skapat
+
+
+
+9. Vad blir konsekvensen av att parametrar till funktioner deklarera konstanta? 
+(1p) 
+
+Dem går inte att ändras på, så om man vill göra om variabeln så måste man kopiera den och spara den i en ny variabel.
+
+
+10. Hur skriver man i C++ om man vill skapa ett vector-objekt för klasstypen 
+Dice? (1p) 
+
+#include <vector>
+vector<Dice> dices;
+
+
+11. Hur ser prototypen ut för en sorteringsfunktion som ska utföra sortering av 
+en vector om innehållet i vectorn efter exekveringen av funktionen ska vara 
+sorterat? (1p) 
+
+
+
+
+12. Antag att man vill använda default argument för en (1) parameter till en 
+funktion som totalt har 3 parametrar. Vilken/vilka av dessa parametrar kan 
+då ha defaultargument? (1p) 
+
+
+
+13. Vad är en klassvariabel och hur deklareras en sådan? (1p) 
+
+
+
+14. Namnge och beskriv principen för en sorteringsalgoritm samt visa hur följden 
+12, 43, 1, 67, 53, 12, 4, 88 sorteras med den aktuella algoritmen. (2p) 
+
+
+
+15. På vilket sätt kan du i en klassdeklaration se till att medlemmar (funktioner 
+och variabler) inte blir åtkomliga direkt från ett objekt via punktnotation. 
+ (1p) 
+
+
+
+16. Hur skriver du kod i C++ för att avgöra om talet i heltalsvariabeln nr är ett 
+jämnt 100-tal? (1p) 
+
+
+
+17. Beskriv konceptet/begreppet dynamisk minnesallokering. Ge exempel i C++ 
+kod. (2p) 
+
+
+
+18. När anropas en destruktor för ett objekt som skapats lokalt i en funktion? 
+ (1p) 
+
+
+
+19. Hur kan en initieringslista användas för att få värdena ”Italien”, ”Finland”, 
+”Kina”, ”Island” på de första platserna i en array med strängar av storlek 10. 
+Arrayen ska ha namnet countries? (1p) 
+
+
+
+20.Hur skriver du i C++ om du vill undersöka om innehållet i en heltalsvariabel 
+number ligger inom intervallet [10..20]? (1p) 
+
+
+
+21. Vad sker vid ett funktions-anrop avseende parametrarna? (1p) 
+
+
