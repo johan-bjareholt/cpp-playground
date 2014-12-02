@@ -30,10 +30,20 @@ Friend::Friend(int id, string name, string bday, string number){
 	this->bday = atoi(bday.c_str());
 }
 
+Friend::Friend(const Friend& oldfriend){
+	this->name = oldfriend.name;
+	this->bday = oldfriend.bday;
+	this->number = oldfriend.number;
+}
+
 Friend::~Friend(){}
 
 void Friend::setID(int id){
 	this->id = id;
+}
+
+int Friend::getID(){
+	return this->id;
 }
 
 string Friend::infoStr(){

@@ -1,5 +1,5 @@
-c-playground
-============
+cpp-playground
+==============
 
 DV1540 - Inledande programmering i C++
 

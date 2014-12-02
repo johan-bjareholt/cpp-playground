@@ -4,21 +4,29 @@
 
 using namespace std;
 
+string inputDialog(string question){
+	string input;
+	cin.ignore();
+	cin.clear();
+	cout << question;
+	getline(cin, input);
+	return input;
+}
+
+
 void editFriend(FriendBook& myFriends){
 	bool done=false;
-	string name;
-
-	cin.ignore(); cin.clear();
-	getline(cin, name);
+	string name = inputDialog("Namn: ");
 
 	Friend* f = myFriends.find(name);
 	if (f!=NULL){
 		char choice;
 		string temp;
 		do {
-			cout << "1. Change name" << endl;
-			cout << "2. asd" << endl;
-			cout << "b. back" << endl;
+			cout << "1. Ändra namn" << endl;
+			cout << "2. Ändra nummer" << endl;
+			cout << "3. Ta bort vän" << endl;
+			cout << "q. tillbaka" << endl;
 			cin >> choice;
 			switch (choice){
 				case '1':
@@ -28,29 +36,31 @@ void editFriend(FriendBook& myFriends){
 					break;
 				case '2':
 					cin.ignore();cin.clear();
+					cout << "New number: ";
 					getline(cin, temp);
 					f->setNumber(temp);
 					break;
-				case 'b':
+				case 'q':
 					done=true;
 					break;
 				default:
-					cout << "Invalid choice" << endl;
+					cout << "Ogiltigt alternativ" << endl;
 			}
 		} while(!done);
 	}
 	else {
-		cout << "Could not find any friend named " << name << endl;
+		cout << "Kunde inte hitta någon vän med namnet " << name << endl;
 	}
 }
 
-void addFriendDialog(FriendBook& myFriends){
-	string name;
-	cin.ignore();
-	cin.clear();
-	cout << "Namn: ";
-	getline(cin, name);
-	myFriends.addFriend(name);
+void showFriendsSorted(FriendBook& myFriends){
+	/*
+	FriendBook sortedFriends = FriendBook(myFriends);
+	sortedFriends.sort();
+	cout << sortedFriends.listFriends();
+	*/
+	myFriends.sort();
+	cout << myFriends.listFriends();
 }
 
 int main(){
@@ -58,33 +68,42 @@ int main(){
 
 	FriendBook myFriends = FriendBook();
 
+	string input;
+
 	char choice;
 	do {
-		cout << "1. Add friend" << endl;
-		cout << "2. Edit friend" << endl;
-		cout << "3. List friends" << endl;
-		cout << "4. Sort friends" << endl;
-		cout << "5. Save friends" << endl;
-		cout << "6. Load friends" << endl;
-		cout << "q. Quit" << endl;
+		cout << "1. Lägg till vän" << endl;
+		cout << "2. Ta bort vän" << endl;
+		cout << "3. Redigera vän" << endl;
+		cout << "4. Visa alla vänner" << endl;
+		cout << "5. Visa alla vänner sorterade" << endl;
+		cout << "6. Spara vänner" << endl;
+		cout << "7. Ladda vänner" << endl;
+		cout << "q. Avsluta" << endl;
+		cout << "> ";
 		cin >> choice;
 		switch (choice){
 			case '1':
-				addFriendDialog(myFriends);
+				input = inputDialog("Namn: ");
+				myFriends.addFriend(input);
 				break;
 			case '2':
-				editFriend(myFriends);
+				input = inputDialog("Namn: ");
+				myFriends.deleteFriend(input);
 				break;
 			case '3':
-				cout << myFriends.listFriends();
+				editFriend(myFriends);
 				break;
 			case '4':
-				myFriends.sort();
+				cout << myFriends.listFriends();
 				break;
 			case '5':
-				myFriends.save();
+				showFriendsSorted(myFriends);
 				break;
 			case '6':
+				myFriends.save();
+				break;
+			case '7':
 				myFriends.load();
 				break;
 			case 'q':

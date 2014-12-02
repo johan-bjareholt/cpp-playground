@@ -19,8 +19,10 @@ public:
 	Friend(int);
 	Friend(int,string);
 	Friend(int,string,string,string);
+	Friend(const Friend&);
 	~Friend();
 	void setID(int);
+	int getID();
 	string infoStr();
 	string infoCsv();
 	void setName(string);

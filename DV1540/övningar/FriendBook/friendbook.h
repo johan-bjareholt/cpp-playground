@@ -11,16 +11,20 @@ const string SAVEFILE = "friends.csv";
 class FriendBook
 {
 private:
-	Friend friends[MAXFRIENDAMOUNT];
+	Friend** friends;
 public:
-	static int nextid;
+	int nextid;
 	FriendBook();
+	FriendBook(const FriendBook&);
+	~FriendBook();
 	void addFriend(string);
+	bool deleteFriend(string);
 	string listFriends();
 	Friend* find(string);
 	void sort();
 	void save();
 	void load();
+	FriendBook operator=(const FriendBook&);
 };
 
 #endif
