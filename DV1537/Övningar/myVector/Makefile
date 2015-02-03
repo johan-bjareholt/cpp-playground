@@ -1,2 +1,2 @@
 all:
-	c++ --std=c++11 main.cpp -o bin
+	c++ -Wall --std=c++11 main.cpp -o bin

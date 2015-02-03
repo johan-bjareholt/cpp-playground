@@ -5,20 +5,24 @@
 
 class CellularPhoneStock {
 private:
-	CellularPhone* stock[30];
-	static int modelCount;
+	const static int STOCKSIZE = 30;
+	CellularPhone* stock[STOCKSIZE];
+	int modelCount;
 public:
 	CellularPhoneStock();
+	CellularPhoneStock(CellularPhoneStock*);
 	~CellularPhoneStock();
 
-	bool addCellularPhone(string,int,string,int=1);
-	bool removeCellularPhone(string,string,int=1);
-	int getPhoneIndex(string, string);
+	const bool addCellularPhone(string,int,string,int=1);
+	const bool removeCellularPhone(string,string,int=1);
+	const int getPhoneIndex(string, string);
 	void sort();
 
-	string allPhones();
-	string allColorsOfModel(string);
-	string allPhonesBelowPrice(int);
+	void operator=(CellularPhoneStock&);
+
+	const string allPhones();
+	const string allColorsOfModel(string);
+	const string allPhonesBelowPrice(int);
 };
 
 #endif

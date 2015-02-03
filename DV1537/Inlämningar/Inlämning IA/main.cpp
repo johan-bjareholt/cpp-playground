@@ -61,14 +61,20 @@ void removePhoneDialog(CellularPhoneStock& stock){
 int main(){
 	bool running=true;
 
-	CellularPhoneStock stock = CellularPhoneStock();
+	CellularPhoneStock stock2 = CellularPhoneStock();
 	// Standard models for debugging, uncomment if you want to use them
-	/*
-	stock.addCellularPhone("Apple iPhone 6", 6000, "Guld",3);
-	stock.addCellularPhone("Apple iPhone 6", 6000, "Silver",4);
-	stock.addCellularPhone("LG G3", 5000, "Svart",2);
-	stock.addCellularPhone("Samsung Galaxy S5", 5800, "Blå",5);
-	*/
+	
+	stock2.addCellularPhone("Apple iPhone 6", 6000, "Guld",3);
+	stock2.addCellularPhone("Apple iPhone 6", 6000, "Silver",4);
+	stock2.addCellularPhone("LG G3", 5000, "Svart",2);
+	stock2.addCellularPhone("Samsung Galaxy S5", 5800, "Blå",5);
+
+	// Stock deepcopying test, uncomment to try it
+	
+	CellularPhoneStock stock = CellularPhoneStock();
+	stock.addCellularPhone("Motorola Moto X", 6000, "Svart", 2);
+	stock = stock2;
+	std::cout << stock2.allPhones();
 
 	char choice;
 	cout << "Välkommen till Telefon Varuhuset!" << endl;

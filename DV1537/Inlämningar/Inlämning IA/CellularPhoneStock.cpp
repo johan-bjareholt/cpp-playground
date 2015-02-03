@@ -2,10 +2,17 @@
 
 #include <sstream>
 
-int CellularPhoneStock::modelCount = 0;
 
 CellularPhoneStock::CellularPhoneStock(){
+	modelCount = 0;
+}
 
+CellularPhoneStock::CellularPhoneStock(CellularPhoneStock* origin){
+	this->modelCount = origin->modelCount;
+	for (int i=0; i<origin->modelCount; i++){
+		this->stock[i] = new CellularPhone(*origin->stock[i]);
+	}
+	this->modelCount = origin->modelCount;
 }
 
 CellularPhoneStock::~CellularPhoneStock(){
@@ -14,7 +21,7 @@ CellularPhoneStock::~CellularPhoneStock(){
 	}
 }
 
-bool CellularPhoneStock::addCellularPhone(string model, int price, string color, int amount){
+const bool CellularPhoneStock::addCellularPhone(string model, int price, string color, int amount){
 	bool returnval;
 	int modelIndex = getPhoneIndex(model, color);
 	if (modelIndex!=-1){ // If model is found in stock
@@ -31,7 +38,7 @@ bool CellularPhoneStock::addCellularPhone(string model, int price, string color,
 	return returnval;
 }
 
-bool CellularPhoneStock::removeCellularPhone(string model, string color, int amount){
+const bool CellularPhoneStock::removeCellularPhone(string model, string color, int amount){
 	int result;
 	int modelIndex = getPhoneIndex(model, color);
 	if (modelIndex != -1){
@@ -53,7 +60,7 @@ bool CellularPhoneStock::removeCellularPhone(string model, string color, int amo
 	return result;
 }
 
-int CellularPhoneStock::getPhoneIndex(string model, string color){
+const int CellularPhoneStock::getPhoneIndex(string model, string color){
 	CellularPhone* sameModel = NULL;
 	CellularPhone* phone = new CellularPhone(model, 0, color, 0);
 	int modelIndex = -1;
@@ -63,6 +70,7 @@ int CellularPhoneStock::getPhoneIndex(string model, string color){
 			modelIndex = i;
 		}
 	}
+	delete phone;
 	return modelIndex;
 }
 
@@ -78,7 +86,18 @@ void CellularPhoneStock::sort(){
 	}
 }
 
-string CellularPhoneStock::allPhones(){
+void CellularPhoneStock::operator=(CellularPhoneStock& other){
+	for (int i=0; i<this->modelCount; i++){
+		delete this->stock[i];		
+	}
+	this->modelCount = other.modelCount;
+	for (int i=0; i<this->modelCount; i++){
+		this->stock[i] = new CellularPhone(*other.stock[i]);
+	}
+	this->modelCount = other.modelCount;
+}
+
+const string CellularPhoneStock::allPhones(){
 	stringstream ss;
 	for (int i=0; i<modelCount; i++){
 		ss << stock[i]->getInfo() << endl;
@@ -86,7 +105,7 @@ string CellularPhoneStock::allPhones(){
 	return ss.str();
 }
 
-string CellularPhoneStock::allColorsOfModel(string model){
+const string CellularPhoneStock::allColorsOfModel(string model){
 	stringstream ss;
 	for (int i=0; i<modelCount; i++){
 		if (stock[i]->getModel() == model){
@@ -96,7 +115,7 @@ string CellularPhoneStock::allColorsOfModel(string model){
 	return ss.str();
 }
 
-string CellularPhoneStock::allPhonesBelowPrice(int price){
+const string CellularPhoneStock::allPhonesBelowPrice(int price){
 	stringstream ss;
 	for (int i=0; i<modelCount; i++){
 		if (stock[i]->getPrice() < price){

@@ -16,25 +16,25 @@ public:
 	CellularPhone(CellularPhone&);
 	~CellularPhone();
 
-	bool operator==(CellularPhone&);
+	const bool operator==(CellularPhone&);
 	void operator=(CellularPhone&);
-	bool operator<(CellularPhone&);
+	const bool operator<(CellularPhone&);
 
-	string getModel();
+	const string getModel();
 	void setModel(string);
 
-	string getColor();
+	const string getColor();
 	void setColor(string);
 
-	int getPrice();
+	const int getPrice();
 	void setPrice(int);
 
-	int getStock();
+	const int getStock();
 	void setStock(int);
 	void addToStock(int=1);
 	void removeFromStock(int=1);
 
-	string getInfo();
+	const string getInfo();
 };
 
 #endif

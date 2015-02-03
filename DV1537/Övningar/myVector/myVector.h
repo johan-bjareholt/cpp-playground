@@ -6,7 +6,7 @@ private:
 	int size;
 	int expandsize;
 public:
-	myVector(int=100,int=100);
+	myVector(int=10,int=10);
 	~myVector();
 	// Insertion
 	bool append(T&);
@@ -34,7 +34,7 @@ myVector<T>::myVector (int size, int expandsize){
 
 template <class T>
 myVector<T>::~myVector(){
-	delete vector;
+	delete[] vector;
 }
 
 /*
@@ -43,7 +43,8 @@ myVector<T>::~myVector(){
 
 template <class T>
 bool myVector<T>::append(T& entry){
-	//if (reserved >= size)
+	if (reserved >= size)
+		this->expand();
 	vector[reserved] = &entry;
 	reserved++;
 	return true;
@@ -51,6 +52,8 @@ bool myVector<T>::append(T& entry){
 
 template <class T>
 bool myVector<T>::append(T* entry){
+	if (reserved >= size)
+		this->expand();
 	vector[reserved] = entry;
 	reserved++;
 	return true;
@@ -85,12 +88,12 @@ T& myVector<T>::operator[](int index){
 
 template <class T>
 void myVector<T>::expand(){
-	size += expand;
+	size += expandsize;
 	T** newvector = new T*[size];
 	for(int i=0; i<reserved; i++){
 		newvector[i] = vector[i];
 	}
-	delete vector;
+	delete[] vector;
 	vector = newvector;
 }
 

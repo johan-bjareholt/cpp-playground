@@ -1,0 +1,118 @@
+1. 
+För att en klass ska bli abstrakt så krävs det att den innehåller en rent virtuell funktion
+Detta gör
+
+2. 
+template <class T>
+class Dummy{
+	std::vector<Type> asd;
+}
+
+3.
+Låt oss säga att vi har en klass som heter Bil och två underklasser som heter Brandbil och Polisbil.
+Om Bil har en funktion som heter info() och returnerar information som en sträng om dess hastighet, vikt osv och vi vill ha information om brandbilens vattentank eller om polisbilen har sirener så skulle det vanligtvis inte kunna visas i info.
+Med dynamisks bindning så kan vi lägga till virtual antingen på info eller en ny funktion som heter additionalInfo som info lägger till på sin sträng för att även visa information om 
+
+4.
+I alla klasser som har någon dynamisk medlemsvariabel bör man ha en destruktor.
+Copy konstruktor och tilldelningsoperator är väldigt användbart i klasser som det finns flera instanser av, då det gör det möjligt att kopiera och klona objekt.
+
+5.
+Vet inte om man skulle kalla det en konsekvens, men om man har en basklass med en virtuell destruktor och man kallar destrukturn till en klass som deriverar basklassen så kommer båda dess destruktorer köras.
+
+6.
+int power(unsigned int x, unsigned int y){
+	if (y==1)
+		return x;
+	else
+		return power(x*x, y-1);
+}
+
+7.
+Definiering:
+int size = 100;
+void** myarray = new void*[size];
+
+Ökning:
+void** newarray = new void*[size*2];
+for (int n=0; n<size; n++){
+	newarray[n] = myarray[n];
+}
+delete myarray;
+myarray = newarray;
+size *= 2;
+
+8.
+Quicksort är snabb för att den är rekursiv och kan parralleliseras.
+Den går ut på att man tar det sista talet i följden som såklallat "pivot" och jämför den med det första talet i ordningen, ifall det är större flyttar man pivot talet fram, talet framför lägger man på första talet och första talet lägger man på pivots gamla plats. Sedan gör man samma sak fast med det andra talet och nya pivot. Detta pågår tills pivot har kommit fram till det talet man jämför med. När detta har hänt så är alla talen på den ena sidan större än alla talen på den andra sidan. Då kan man dela upp dessa och sortera var del för sig tills allt är sorterat.
+
+j												 p
+34, 5, 64, 72, 19, 11, 77, 7, 16, 48, 56, 1, 15, 71
+	j											 p
+34, 5, 64, 72, 19, 11, 77, 7, 16, 48, 56, 1, 15, 71 
+	j											 p
+34, 5, 64, 72, 19, 11, 77, 7, 16, 48, 56, 1, 15, 71
+		j										 p
+34, 5, 64, 72, 19, 11, 77, 7, 16, 48, 56, 1, 15, 71
+			j									 p
+34, 5, 64, 72, 19, 11, 77, 7, 16, 48, 56, 1, 15, 71
+			j								  p	 
+34, 5, 64, 15, 19, 11, 77, 7, 16, 48, 56, 1, 71, 72
+				j							  p
+34, 5, 64, 15, 19, 11, 77, 7, 16, 48, 56, 1, 71, 72
+					j						  p
+34, 5, 64, 15, 19, 11, 77, 7, 16, 48, 56, 1, 71, 72
+						j					  p
+34, 5, 64, 15, 19, 11, 77, 7, 16, 48, 56, 1, 71, 72
+					   j				 p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56, 71, 77, 72
+					      j				 p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56, 71, 77, 72
+					          j			 p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56, 71, 77, 72
+					              j		 p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56, 71, 77, 72
+					                  j	 p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56, 71, 77, 72
+
+Första partitionen klar, börjar med vänstersidan
+
+j									 p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56 | 71, 77, 72
+j								  p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56 | 71, 77, 72
+j							 p
+34, 5, 64, 15, 19, 11, 1, 7, 16, 48, 56 | 71, 77, 72
+	j						 p
+16, 5, 64, 15, 19, 11, 1, 7, 34, 48, 56 | 71, 77, 72
+	j						 p
+16, 5, 64, 15, 19, 11, 1, 7, 34, 48, 56 | 71, 77, 72
+		j					 p
+16, 5, 64, 15, 19, 11, 1, 7, 34, 48, 56 | 71, 77, 72
+		j				  p
+16, 5, 7, 15, 19, 11, 1, 34, 64, 48, 56 | 71, 77, 72
+			j			  p
+16, 5, 7, 15, 19, 11, 1, 34, 64, 48, 56 | 71, 77, 72
+			  j		  	  p
+16, 5, 7, 15, 19, 11, 1, 34, 64, 48, 56 | 71, 77, 72
+			  	  j		  p
+16, 5, 7, 15, 19, 11, 1, 34, 64, 48, 56 | 71, 77, 72
+			  	  	  j	  p
+16, 5, 7, 15, 19, 11, 1, 34, 64, 48, 56 | 71, 77, 72
+
+Såja
+
+16, 5, 7, 15, 19, 11, 1 | 34, 64, 48, 56 | 71, 77, 72
+
+
+
+9.
+
+
+10.
+Att listan är sorterad.
+Algoritmen lyder att man tar det mittersta talet och ifall det är rätt tal returnerar man det, och är det större eller mindre så gör man samma sökning på antingen den första eller andra halvan av listan. Har man kommit till ett sista tal som inte går att dela upp och det är fel tal, så finns inte talet.
+
+11.
+Man tilldelar den högras pekare till den vänstras address.
+Om man inte har kvar addressen till den högras pekare i någon annan variabel, så blir det en minnesläcka.
